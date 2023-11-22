@@ -12,6 +12,9 @@ st.subheader("Utilize our advanced machine learning application to predict"
              " fetal health classifications.")
 st.write("To ensure optimal results, please ensure that your data strictly"
          " adheres to the specific format outlined below:")
+example_df = pd.read_csv("fetal_health.csv")
+example_df.head()
+st.dataframe(example_df)
 
 #reading in random forest pickle file
 rf_pickle = open('rf_fetal.pickle', 'rb') 
