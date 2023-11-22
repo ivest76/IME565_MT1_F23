@@ -31,7 +31,19 @@ new_prediction_rf = rf_model.predict(fetal_df)
 new_prediction_prob_rf = rf_model.predict_proba(fetal_df).max()
 fetal_df["Predicted Fetal Health"] = new_prediction_rf.tolist()
 fetal_df["Prediction Probability"] = new_prediction_prob_rf.tolist()
-st.dataframe(fetal_df)
+
+def color_fetal(val):
+    if val == "Normal":
+        return 'background-color: limegreen'
+    elif val == "Suspect":
+        return 'background-color: yellow'
+    elif val == "Pathological":
+        return 'background-color: orange'
+    else:
+        return ''
+
+my_df = fetal_df.style.applymap(color_fetal, subset=["Predicted Fetal Health"])
+st.dataframe(my_df)
 
 #showing other ml items
 st.subheader("Prediction Performance")
