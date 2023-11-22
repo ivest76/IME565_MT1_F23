@@ -1,6 +1,7 @@
 #loading in libraries
 import streamlit as st
 import pandas as pd
+import sklearn
 import warnings
 import pickle
 warnings.filterwarnings('ignore')
